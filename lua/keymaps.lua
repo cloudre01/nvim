@@ -50,6 +50,12 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Move text up and down
+keymap("n", "<A-j>", ":m .+1<CR>==", opts) -- move line up(n)
+keymap("n", "<A-k>", ":m .-2<CR>==", opts) -- move line down(n)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts) -- move line up(v)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts) -- move line down(v)
+
 -- Plugins --
 
 -- NvimTree
@@ -81,3 +87,6 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+
+-- Copilot
+keymap("i", "<A-a>", "copilot#Accept('')", { noremap = true, silent = true, expr = true, replace_keycodes = false }) -- remap to Alt+a

@@ -24,11 +24,12 @@ local M = {
     },
     {
       "L3MON4D3/LuaSnip",
-      commit = "9bff06b570df29434a88f9c6a9cea3b21ca17208",
+      version = "<CurrentMajor>.*",
+      -- commit = "9bff06b570df29434a88f9c6a9cea3b21ca17208",
       event = "InsertEnter",
       dependencies = {
         "rafamadriz/friendly-snippets",
-        commit = "a6f7a1609addb4e57daa6bedc300f77f8d225ab7",
+        commit = "9590ff90759488674cf97fe5d5754a0733ab37bb",
       },
     },
     {
@@ -46,6 +47,7 @@ function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
   require("luasnip/loaders/from_vscode").lazy_load()
+  luasnip.filetype_extend("typescript", { "javascript" })
 
   local check_backspace = function()
     local col = vim.fn.col "." - 1
