@@ -150,6 +150,7 @@ function M.config()
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
       { name = "luasnip" },
+      { name = "crates" },
       { name = "buffer" },
       { name = "path" },
     },

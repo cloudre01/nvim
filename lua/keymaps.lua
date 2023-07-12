@@ -90,3 +90,18 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 
 -- Copilot
 keymap("i", "<A-a>", "copilot#Accept('')", { noremap = true, silent = true, expr = true, replace_keycodes = false }) -- remap to Alt+a
+
+-- Crates
+keymap("n", "<leader>ct", "<cmd>lua require'crates'.toggle()<cr>", opts)
+keymap("n", "<leader>cr", "<cmd>lua require'crates'.reload()<cr>", opts)
+
+keymap("n", "<leader>cv", "<cmd>lua require'crates'.show_versions_popup()<cr>", opts)
+keymap("n", "<leader>cf", "<cmd>lua require'crates'.show_features_popup()<cr>", opts)
+keymap("n", "<leader>cd", "<cmd>lua require'crates'.show_dependencies_popup()<cr>", opts)
+
+keymap("n", "<leader>cu", "<cmd>lua require'crates'.update_crate()<cr>", opts)
+keymap("v", "<leader>cu", "<cmd>lua require'crates'.update_crates()<cr>", opts)
+keymap("n", "<leader>ca", "<cmd>lua require'crates'.update_all_crates()<cr>", opts)
+keymap("n", "<leader>cU", "<cmd>lua require'crates'.upgrade_crate()<cr>", opts)
+keymap("v", "<leader>cU", "<cmd>lua require'crates'.upgrade_crates()<cr>", opts)
+keymap("n", "<leader>cA", "<cmd>lua require'crates'.upgrade_all_crates()<cr>", opts)
