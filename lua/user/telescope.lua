@@ -28,6 +28,11 @@ M.opts = {
       },
     },
   },
+  pickers = {
+    find_files = {
+      find_command = {"rg", "--files", "--hidden", "-g", "!.git", "--no-ignore-vcs"},
+    }
+  }
 }
 
 return M
