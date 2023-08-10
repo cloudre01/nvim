@@ -1,11 +1,11 @@
 local M = {
   "jose-elias-alvarez/null-ls.nvim",
   event = "BufReadPre",
-  commit = "60b4a7167c79c7d04d1ff48b55f2235bf58158a7",
+  commit = "db09b6c691def0038c456551e4e2772186449f35",
   dependencies = {
     {
       "nvim-lua/plenary.nvim",
-      commit = "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
+      commit = "267282a9ce242bbb0c5dc31445b6d353bed978bb",
       lazy = true,
     },
   },
@@ -34,6 +34,7 @@ function M.config()
       formatting.goimports_reviser,
       formatting.golines,
       formatting.rustfmt,
+      formatting.forge_fmt,
       diagnostics.flake8,
     },
   }

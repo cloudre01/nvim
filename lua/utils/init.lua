@@ -12,6 +12,7 @@ M.servers = {
   "rust_analyzer",
   "eslint",
   "gopls",
+  "solidity_ls_nomicfoundation",
 }
 
 return M

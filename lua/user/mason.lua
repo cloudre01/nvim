@@ -1,12 +1,12 @@
 local M = {
   "williamboman/mason.nvim",
-  commit = "4546dec8b56bc56bc1d81e717e4a935bc7cd6477",
+  commit = "fe9e34a9ab4d64321cdc3ecab4ea1809239bb73f",
   cmd = "Mason",
   event = "BufReadPre",
   dependencies = {
     {
       "williamboman/mason-lspconfig.nvim",
-      commit = "93e58e100f37ef4fb0f897deeed20599dae9d128",
+      commit = "e86a4c84ff35240639643ffed56ee1c4d55f538e",
       lazy = true,
     },
   },
