@@ -1,6 +1,6 @@
 local M = {
   "folke/todo-comments.nvim",
-  lazy = false,
+  -- lazy = false,
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     -- your configuration comes here
@@ -9,13 +9,14 @@ local M = {
   }
 }
 
+-- TODO: Start
 function M.config()
-  -- local status_ok, todo_comments = pcall(require, "todo-comments")
-  -- if not status_ok then
-  --   return
-  -- end
+  local status_ok, todo_comments = pcall(require, "todo-comments")
+  if not status_ok then
+    return
+  end
 
-  require('todo-comments').setup()
+  todo_comments.setup()
 end
 
 return M

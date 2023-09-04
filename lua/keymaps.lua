@@ -69,6 +69,11 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<leader>gd", ":DiffviewOpen<CR>", opts)
+keymap("n", "<leader>gc", ":DiffviewClose<CR>", opts)
+keymap("n", "<leader>gf", ":DiffviewToggleFiles<CR>", opts)
+keymap("n", "<leader>gr", ":DiffviewRefresh<CR>", opts)
+keymap("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
@@ -107,7 +112,7 @@ keymap("v", "<leader>cU", "<cmd>lua require'crates'.upgrade_crates()<cr>", opts)
 keymap("n", "<leader>cA", "<cmd>lua require'crates'.upgrade_all_crates()<cr>", opts)
 
 -- Todo-Comments
-keymap("n", "]t", "<cmd>lua require'todo-comments'.jump_next()", opts)
-keymap("n", "[t", "<cmd>lua require'todo-comments'.jump_prev()", opts)
-keymap("n", "<leader>tl", ":TodoLocList<CR>", opts)
-keymap("n", "<leader>tt", ":TodoTelescope keywords=TODO,FIX<CR>", opts)
+keymap("n", "]t", "<cmd>lua require'todo-comments'.jump_next()<CR>", opts)
+keymap("n", "[t", "<cmd>lua require'todo-comments'.jump_prev()<CR>", opts)
+keymap("n", "<leader>tl", "<cmd>lua require'todo-comments.search'.setloclist()<CR>", opts)
+keymap("n", "<leader>tt", ":Telescope todo-comments todo keywords=TODO,FIX<CR>", opts)
