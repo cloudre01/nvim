@@ -51,8 +51,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts) -- move line up(n)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts) -- move line down(n)
+keymap("n", "<A-j>", ":m .+1<CR>==", opts)     -- move line up(n)
+keymap("n", "<A-k>", ":m .-2<CR>==", opts)     -- move line down(n)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts) -- move line up(v)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts) -- move line down(v)
 
@@ -105,3 +105,9 @@ keymap("n", "<leader>ca", "<cmd>lua require'crates'.update_all_crates()<cr>", op
 keymap("n", "<leader>cU", "<cmd>lua require'crates'.upgrade_crate()<cr>", opts)
 keymap("v", "<leader>cU", "<cmd>lua require'crates'.upgrade_crates()<cr>", opts)
 keymap("n", "<leader>cA", "<cmd>lua require'crates'.upgrade_all_crates()<cr>", opts)
+
+-- Todo-Comments
+keymap("n", "]t", "<cmd>lua require'todo-comments'.jump_next()", opts)
+keymap("n", "[t", "<cmd>lua require'todo-comments'.jump_prev()", opts)
+keymap("n", "<leader>tl", ":TodoLocList<CR>", opts)
+keymap("n", "<leader>tt", ":TodoTelescope keywords=TODO,FIX<CR>", opts)

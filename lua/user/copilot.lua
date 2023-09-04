@@ -1,7 +1,7 @@
 local M = {
   "github/copilot.vim",
   commit = "b6e5624351ba735e25eb8864d7d22819aad00606",
-  lazy = false,
+  lazy = true,
 }
 
 -- Disable tab mapping
