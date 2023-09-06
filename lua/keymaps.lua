@@ -7,6 +7,9 @@ local opts = { silent = true }
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
+-- Disable global mapping for codium
+vim.g.codeium_disable_bindings = 1
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -51,8 +54,7 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)     -- move line up(n)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)     -- move line down(n)
+keymap("n", "<A-j>", ":m .+1<CR>==", opts)     -- move line up(n) keymap("n", "<A-k>", ":m .-2<CR>==", opts)     -- move line down(n)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts) -- move line up(v)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts) -- move line down(v)
 
@@ -94,7 +96,7 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 -- Copilot
-keymap("i", "<A-a>", "copilot#Accept('')", { noremap = true, silent = true, expr = true, replace_keycodes = false }) -- remap to Alt+a
+-- keymap("i", "<A-a>", "copilot#Accept('')", { noremap = true, silent = true, expr = true, replace_keycodes = false }) -- remap to Alt+a
 
 -- Crates
 keymap("n", "<leader>ct", "<cmd>lua require'crates'.toggle()<cr>", opts)
@@ -116,3 +118,8 @@ keymap("n", "]t", "<cmd>lua require'todo-comments'.jump_next()<CR>", opts)
 keymap("n", "[t", "<cmd>lua require'todo-comments'.jump_prev()<CR>", opts)
 keymap("n", "<leader>tl", "<cmd>lua require'todo-comments.search'.setloclist()<CR>", opts)
 keymap("n", "<leader>tt", ":Telescope todo-comments todo keywords=TODO,FIX<CR>", opts)
+
+-- Codeium
+keymap("i", "<A-a>", function() return vim.fn['codeium#Accept']() end, { noremap = true, silent = true, expr = true, replace_keycodes = false })
+keymap("i", "<A-[>", function() return vim.fn['codeium#CycleCompletions'](1) end, { noremap = true, silent = true, expr = true })
+keymap("i", "<A-]>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { noremap = true, silent = true, expr = true })
