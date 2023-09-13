@@ -123,3 +123,10 @@ keymap("n", "<leader>tt", ":Telescope todo-comments todo keywords=TODO,FIX<CR>",
 keymap("i", "<A-a>", function() return vim.fn['codeium#Accept']() end, { noremap = true, silent = true, expr = true, replace_keycodes = false })
 keymap("i", "<A-[>", function() return vim.fn['codeium#CycleCompletions'](1) end, { noremap = true, silent = true, expr = true })
 keymap("i", "<A-]>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { noremap = true, silent = true, expr = true })
+
+-- Harpoon
+keymap("n", "<leader>ma", "<cmd>lua require'harpoon.mark'.add_file()<CR>", opts)
+keymap("n", "<leader>mm", "<cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>", opts)
+keymap("n", "<leader>m;", "<cmd>lua require'harpoon.ui'.nav_next()<CR>", opts)
+keymap("n", "<leader>m,", "<cmd>lua require'harpoon.ui'.nav_prev()<CR>", opts)
+keymap("n", "<leader>mt", "<cmd>lua require'harpoon.mark'.toggle_file()<CR>", opts)

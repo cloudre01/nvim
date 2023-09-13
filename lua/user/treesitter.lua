@@ -1,6 +1,6 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  commit = "2aa9e9b0e655462890c6d2d8632a0d569be66482",
+  commit = "0ba881b7a2af0e24962e4522cf15ebd642261a90",
   event = "BufReadPost",
   dependencies = {
     {
@@ -33,6 +33,7 @@ function M.config()
       "go",
       "sql",
     },                       -- put the language you want in this array
+    auto_install = true,
     -- ensure_installed = "all", -- one of "all" or a list of languages
     ignore_install = { "" }, -- List of parsers to ignore installing
     sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
