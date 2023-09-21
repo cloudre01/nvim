@@ -13,6 +13,7 @@ M.servers = {
   "eslint",
   "gopls",
   "solidity_ls_nomicfoundation",
+  "zls",
 }
 
 return M

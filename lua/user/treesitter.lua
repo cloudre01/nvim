@@ -32,6 +32,7 @@ function M.config()
       "javascript",
       "go",
       "sql",
+      "zig",
     },                       -- put the language you want in this array
     auto_install = true,
     -- ensure_installed = "all", -- one of "all" or a list of languages

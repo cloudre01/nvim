@@ -61,6 +61,7 @@ M = {
   config = function()
     require("dap_install").setup {}
     require("dap_install").config("python", {})
+    require("dap_install").config("jsnode", {})
   end,
 }
 
