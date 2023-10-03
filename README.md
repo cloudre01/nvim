@@ -31,7 +31,7 @@ sudo make install
 Make sure to remove or backup your current `nvim` directory
 
 ```sh
-git clone https://github.com/LunarVim/nvim-basic-ide.git ~/.config/nvim
+git clone https://github.com/cloudre01/nvim.git ~/.config/nvim
 ```
 
 Run `nvim` and wait for the plugins to be installed
@@ -182,7 +182,6 @@ Just make a new file with your plugin and the configuration in it,
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 - [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
-- [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 
 ---
