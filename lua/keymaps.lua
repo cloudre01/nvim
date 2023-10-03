@@ -95,6 +95,10 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
+-- Trouble
+keymap("n", "<leader>lq", "<cmd>lua require'trouble'.open('loclist')<cr>", opts)
+keymap("n", "<leader>gr", "<cmd>lua require'trouble'.open('lsp_references')<cr>", opts)
+
 -- Copilot
 -- keymap("i", "<A-a>", "copilot#Accept('')", { noremap = true, silent = true, expr = true, replace_keycodes = false }) -- remap to Alt+a
 

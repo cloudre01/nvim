@@ -1,6 +1,6 @@
 local M = {
-  "kyazdani42/nvim-tree.lua",
-  commit = "904f95cd9db31d1800998fa428e78e418a50181d",
+  "nvim-tree/nvim-tree.lua",
+  commit = "7dcda5d3b6d2fce7b7baa471b7ad6525383e27bb",
   event = "VimEnter"
 }
 
@@ -21,63 +21,92 @@ local function on_attach(bufnr)
 end
 
 function M.config()
-  local tree_cb = require("nvim-tree.config").nvim_tree_callback
+  -- local tree_cb = require("nvim-tree.config").nvim_tree_callback
+  local icons = require("icons")
   require("nvim-tree").setup {
     update_focused_file = {
       enable = true,
-      -- update_cwd = true,
+      debounce_delay = 15,
+      ignore_list = {},
     },
     filters = {
       git_ignored = false,
       dotfiles = false,
-      custom = {"^.git$"},
+      no_buffer = false,
+      git_clean = false,
+      custom = { "^.git$" },
+      exclude = {},
     },
     renderer = {
       icons = {
         glyphs = {
-          default = "",
-          symlink = "",
+          default = "",
+          symlink = "",
+          bookmark = "",
           folder = {
-            arrow_open = "",
-            arrow_closed = "",
-            default = "",
-            open = "",
-            empty = "",
-            empty_open = "",
-            symlink = "",
-            symlink_open = "",
+            arrow_open = icons.ui.TriangleShortArrowDown,
+            arrow_closed = icons.ui.TriangleShortArrowRight,
+            default = icons.ui.Folder,
+            open = icons.ui.FolderOpen,
+            empty = icons.ui.EmptyFolder,
+            empty_open = icons.ui.EmptyFolderOpen,
+            symlink = icons.ui.FolderSymlink,
+            symlink_open = icons.ui.FolderOpen,
           },
           git = {
-            unstaged = "",
-            staged = "S",
-            unmerged = "",
-            renamed = "➜",
-            untracked = "U",
-            deleted = "",
-            ignored = "◌",
+            unstaged = icons.git.FileUnstaged,
+            staged = icons.git.FileStaged,
+            unmerged = icons.git.FileUnmerged,
+            renamed = icons.git.FileRenamed,
+            untracked = icons.git.FileUntracked,
+            deleted = icons.git.FileDeleted,
+            ignored = icons.git.FileIgnored,
           },
         },
       },
+      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+      symlink_destination = true,
+    },
+    hijack_directories = {
+      enable = false,
+      auto_open = true,
     },
     diagnostics = {
       enable = true,
-      show_on_dirs = true,
+      show_on_dirs = false,
+      show_on_open_dirs = true,
+      debounce_delay = 50,
+      severity = {
+        min = vim.diagnostic.severity.HINT,
+        max = vim.diagnostic.severity.ERROR,
+      },
       icons = {
-        hint = "",
-        info = "",
-        warning = "",
-        error = "",
+        hint = icons.diagnostics.BoldHint,
+        info = icons.diagnostics.BoldInformation,
+        warning = icons.diagnostics.BoldWarning,
+        error = icons.diagnostics.BoldError,
       },
     },
     on_attach = on_attach,
     view = {
+      adaptive_size = false,
+      centralize_selection = true,
       width = 30,
       side = "left",
-      mappings = {
-        list = {
-          { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-          { key = "h",                  cb = tree_cb "close_node" },
-          { key = "v",                  cb = tree_cb "vsplit" },
+      preserve_window_proportions = false,
+      number = false,
+      relativenumber = false,
+      signcolumn = "yes",
+      float = {
+        enable = false,
+        quit_on_focus_loss = true,
+        open_win_config = {
+          relative = "editor",
+          border = "rounded",
+          width = 30,
+          height = 30,
+          row = 1,
+          col = 1,
         },
       },
     },
