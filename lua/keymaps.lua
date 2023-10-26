@@ -82,40 +82,41 @@ keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.curren
 keymap("x", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
 
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle({reset=true})<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", opts)
+keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", opts)
+keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", opts)
+keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<CR>", opts)
+keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>", opts)
+keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<CR>", opts)
+keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle({reset=true})<CR>", opts)
+keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<CR>", opts)
 
 -- Lsp
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>", opts)
 
 -- Trouble
-keymap("n", "<leader>lq", "<cmd>lua require'trouble'.open('loclist')<cr>", opts)
-keymap("n", "gr", "<cmd>lua require'trouble'.open('lsp_references')<cr>", opts)
+keymap("n", "<leader>lq", "<cmd>lua require'trouble'.open('loclist')<CR>", opts)
+keymap("n", "gr", "<cmd>lua require'trouble'.open('lsp_references')<CR>", opts)
+keymap("n", "<leader>tr", "<cmd>TroubleToggle<CR>", opts)
 
 -- Copilot
 -- keymap("i", "<A-a>", "copilot#Accept('')", { noremap = true, silent = true, expr = true, replace_keycodes = false }) -- remap to Alt+a
 
 -- Crates
-keymap("n", "<leader>ct", "<cmd>lua require'crates'.toggle()<cr>", opts)
-keymap("n", "<leader>cr", "<cmd>lua require'crates'.reload()<cr>", opts)
+keymap("n", "<leader>ct", "<cmd>lua require'crates'.toggle()<CR>", opts)
+keymap("n", "<leader>cr", "<cmd>lua require'crates'.reload()<CR>", opts)
 
-keymap("n", "<leader>cv", "<cmd>lua require'crates'.show_versions_popup()<cr>", opts)
-keymap("n", "<leader>cf", "<cmd>lua require'crates'.show_features_popup()<cr>", opts)
-keymap("n", "<leader>cd", "<cmd>lua require'crates'.show_dependencies_popup()<cr>", opts)
+keymap("n", "<leader>cv", "<cmd>lua require'crates'.show_versions_popup()<CR>", opts)
+keymap("n", "<leader>cf", "<cmd>lua require'crates'.show_features_popup()<CR>", opts)
+keymap("n", "<leader>cd", "<cmd>lua require'crates'.show_dependencies_popup()<CR>", opts)
 
-keymap("n", "<leader>cu", "<cmd>lua require'crates'.update_crate()<cr>", opts)
-keymap("v", "<leader>cu", "<cmd>lua require'crates'.update_crates()<cr>", opts)
-keymap("n", "<leader>ca", "<cmd>lua require'crates'.update_all_crates()<cr>", opts)
-keymap("n", "<leader>cU", "<cmd>lua require'crates'.upgrade_crate()<cr>", opts)
-keymap("v", "<leader>cU", "<cmd>lua require'crates'.upgrade_crates()<cr>", opts)
-keymap("n", "<leader>cA", "<cmd>lua require'crates'.upgrade_all_crates()<cr>", opts)
+keymap("n", "<leader>cu", "<cmd>lua require'crates'.update_crate()<CR>", opts)
+keymap("v", "<leader>cu", "<cmd>lua require'crates'.update_crates()<CR>", opts)
+keymap("n", "<leader>ca", "<cmd>lua require'crates'.update_all_crates()<CR>", opts)
+keymap("n", "<leader>cU", "<cmd>lua require'crates'.upgrade_crate()<CR>", opts)
+keymap("v", "<leader>cU", "<cmd>lua require'crates'.upgrade_crates()<CR>", opts)
+keymap("n", "<leader>cA", "<cmd>lua require'crates'.upgrade_all_crates()<CR>", opts)
 
 -- Todo-Comments
 keymap("n", "]t", "<cmd>lua require'todo-comments'.jump_next()<CR>", opts)
@@ -124,9 +125,12 @@ keymap("n", "<leader>tl", "<cmd>lua require'todo-comments.search'.setloclist()<C
 keymap("n", "<leader>tt", ":Telescope todo-comments todo keywords=TODO,FIX<CR>", opts)
 
 -- Codeium
-keymap("i", "<A-a>", function() return vim.fn['codeium#Accept']() end, { noremap = true, silent = true, expr = true, replace_keycodes = false })
-keymap("i", "<A-[>", function() return vim.fn['codeium#CycleCompletions'](1) end, { noremap = true, silent = true, expr = true })
-keymap("i", "<A-]>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { noremap = true, silent = true, expr = true })
+keymap("i", "<A-a>", function() return vim.fn['codeium#Accept']() end,
+  { noremap = true, silent = true, expr = true, replace_keycodes = false })
+keymap("i", "<A-[>", function() return vim.fn['codeium#CycleCompletions'](1) end,
+  { noremap = true, silent = true, expr = true })
+keymap("i", "<A-]>", function() return vim.fn['codeium#CycleCompletions'](-1) end,
+  { noremap = true, silent = true, expr = true })
 
 -- Harpoon
 keymap("n", "<leader>ma", "<cmd>lua require'harpoon.mark'.add_file()<CR>", opts)
@@ -136,4 +140,12 @@ keymap("n", "<leader>m,", "<cmd>lua require'harpoon.ui'.nav_prev()<CR>", opts)
 keymap("n", "<leader>mt", "<cmd>lua require'harpoon.mark'.toggle_file()<CR>", opts)
 
 -- Tmux sessionizer
-keymap("n","<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", opts)
+
+-- Aerial
+keymap("n", "<leader>a", "<cmd>lua require'aerial'.toggle()<CR>", opts)
+
+-- Spectre
+keymap("n", "<leader>sr", "<cmd>lua require('spectre').open()<CR>", opts)
+keymap("v", "<leader>sr", "<cmd>lua require('spectre').open_visual()<CR>", opts)
+keymap("n", "<leader>ss", "<cmd>lua require('spectre').open_file_search()<CR>", opts)

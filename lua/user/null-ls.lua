@@ -24,9 +24,11 @@ function M.config()
     sources = {
       formatting.prettierd.with {
         extra_filetypes = { "toml" },
-        extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+        env = {
+          PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/.prettierrc"),
+        }
       },
-      -- formatting.eslint,
+      formatting.eslint,
       formatting.black.with { extra_args = { "--fast" } },
       formatting.stylua,
       formatting.google_java_format,

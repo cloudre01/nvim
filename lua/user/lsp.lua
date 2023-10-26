@@ -36,6 +36,7 @@ function M.config()
   end
 
   local lspconfig = require "lspconfig"
+  local status_ok, navic = pcall(require, "nvim-navic")
   local on_attach = function(client, bufnr)
     if client.name == "tsserver" then
       client.server_capabilities.documentFormattingProvider = false
@@ -50,6 +51,12 @@ function M.config()
         buffer = bufnr,
         command = "EslintFixAll"
       })
+    end
+
+    if client.server_capabilities.documentSymbolProvider then
+      if status_ok then
+        navic.attach(client, bufnr)
+      end
     end
 
     lsp_keymaps(bufnr)

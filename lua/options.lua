@@ -43,3 +43,7 @@ vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters
 vim.opt.linebreak = true
 vim.opt.relativenumber = true
 -- vim.opt.statuscolumn = "%s %=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . ' ' : v:lnum) : ''}%= "
+-- vim.api.nvim_set_hl(
+--   0, "TreesitterContextBottom", {
+--     underline = true 
+-- })

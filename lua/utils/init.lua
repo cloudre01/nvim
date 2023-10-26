@@ -14,6 +14,8 @@ M.servers = {
   "gopls",
   "solidity_ls_nomicfoundation",
   "zls",
+  "tailwindcss",
+  "emmet_ls",
 }
 
 return M

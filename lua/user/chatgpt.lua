@@ -1,6 +1,7 @@
 local M = {
   "jackMort/ChatGPT.nvim",
   event = "VeryLazy",
+  commit = "3d31eacf98b00cc3fd944ef5526be6d738515649",
   dependencies = {
     "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",
