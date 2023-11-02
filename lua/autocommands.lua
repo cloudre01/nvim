@@ -2,8 +2,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
   callback = function()
     vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> q :close<CR>
+      set nobuflisted
     ]]
   end,
 })
@@ -50,4 +50,24 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
       vim.cmd "IlluminatePauseBuf"
     end
   end,
+})
+
+-- Fix: When open buffer deleted, nvim-tree opens fully
+vim.api.nvim_create_autocmd("BufDelete", {
+  nested = true,
+  callback = function()
+    local api = require('nvim-tree.api')
+
+    if api.tree.is_tree_buf() then
+      -- Required to let the close event complete. An error is thrown without this.
+      vim.defer_fn(function()
+        -- close nvim-tree: will go to the last hidden buffer used before closing
+        api.tree.toggle({ find_file = true, focus = true })
+        -- re-open nivm-tree
+        api.tree.toggle({ find_file = true, focus = true })
+        -- nvim-tree is still the active window. Go to the previous window.
+        vim.cmd("wincmd p")
+      end, 0)
+    end
+  end
 })

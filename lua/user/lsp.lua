@@ -1,16 +1,17 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "0517d8522dcec286b1dba47aa3ee1ed8f523aed6",
+  commit = "d0467b9574b48429debf83f8248d8cee79562586",
   lazy = true,
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
+      commit = "44b16d11215dce86f253ce0c30949813c0a90765",
     },
   },
 }
 
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
+local lsp_util = require "utils.lsp"
 function M.config()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -40,6 +41,10 @@ function M.config()
   local on_attach = function(client, bufnr)
     if client.name == "tsserver" then
       client.server_capabilities.documentFormattingProvider = false
+        lsp_util.create_command("GoToSourceDefinition", function(cmd)
+          local is_sync = cmd.fargs[1] == "sync"
+          lsp_util.go_to_lsp_method(is_sync, "textDocument/definition", client, bufnr)
+        end)
     end
 
     if client.name == "sumneko_lua" then

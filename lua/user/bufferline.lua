@@ -1,11 +1,11 @@
 local M = {
   "akinsho/bufferline.nvim",
-  commit = "c7492a76ce8218e3335f027af44930576b561013",
+  commit = "357cc8f8eeb64702e6fcf2995e3b9becee99a5d3",
   event = { "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
   dependencies = {
     {
       "famiu/bufdelete.nvim",
-      commit = "8933abc09df6c381d47dc271b1ee5d266541448e",
+      commit = "07d1f8ba79dec59d42b975a4df1c732b2e4e37b4",
     },
   },
 }
@@ -19,7 +19,7 @@ M.opts = {
   },
   highlights = {
     fill = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
+      fg = { attribute = "fg", highlight = "TabLine" },
       bg = { attribute = "bg", highlight = "TabLine" },
     },
     background = {

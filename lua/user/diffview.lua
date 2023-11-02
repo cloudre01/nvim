@@ -1,6 +1,6 @@
 local M = {
   "sindrets/diffview.nvim",
-  commit = "7e5a85c186027cab1e825d018f07c350177077fc",
+  commit = "d38c1b5266850f77f75e006bcc26213684e1e141",
   event = "VeryLazy"
 }
 

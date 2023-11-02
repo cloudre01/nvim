@@ -1,11 +1,12 @@
 local M = {
   "nvim-tree/nvim-tree.lua",
-  commit = "7dcda5d3b6d2fce7b7baa471b7ad6525383e27bb",
+  commit = "7e3c0bee7b246ca835d5f7453db6fa19de359bab",
   event = "VimEnter"
 }
 
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
+  local utils = require("utils.tree")
 
   local function opts(desc)
     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -18,10 +19,11 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
+
+  vim.keymap.set("n", "<leader>fd", utils.launch_live_grep, opts('Search in directory'))
 end
 
 function M.config()
-  -- local tree_cb = require("nvim-tree.config").nvim_tree_callback
   local icons = require("icons")
   require("nvim-tree").setup {
     update_focused_file = {
@@ -36,6 +38,43 @@ function M.config()
       git_clean = false,
       custom = { "^.git$" },
       exclude = {},
+    },
+    actions = {
+      use_system_clipboard = true,
+      change_dir = {
+        enable = true,
+        global = false,
+        restrict_above_cwd = false,
+      },
+      expand_all = {
+        max_folder_discovery = 300,
+        exclude = {},
+      },
+      file_popup = {
+        open_win_config = {
+          col = 1,
+          row = 1,
+          relative = "cursor",
+          border = "shadow",
+          style = "minimal",
+        },
+      },
+      open_file = {
+        quit_on_open = false,
+        resize_window = false,
+        window_picker = {
+          enable = true,
+          picker = "default",
+          chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+          exclude = {
+            filetype = { "notify", "lazy", "qf", "diff", "fugitive", "fugitiveblame" },
+            buftype = { "nofile", "terminal", "help" },
+          },
+        },
+      },
+      remove_file = {
+        close_window = true,
+      },
     },
     renderer = {
       icons = {

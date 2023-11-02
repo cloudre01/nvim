@@ -96,7 +96,7 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<CR>", opts)
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>", opts)
 
 -- Trouble
-keymap("n", "<leader>lq", "<cmd>lua require'trouble'.open('loclist')<CR>", opts)
+keymap("n", "<leader>lq", "<cmd>lua require'trouble'.toggle('loclist')<CR>", opts)
 keymap("n", "gr", "<cmd>lua require'trouble'.open('lsp_references')<CR>", opts)
 keymap("n", "<leader>tr", "<cmd>TroubleToggle<CR>", opts)
 

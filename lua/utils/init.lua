@@ -16,6 +16,7 @@ M.servers = {
   "zls",
   "tailwindcss",
   "emmet_ls",
+  "svelte"
 }
 
 return M
