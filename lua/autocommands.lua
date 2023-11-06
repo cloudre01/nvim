@@ -71,3 +71,15 @@ vim.api.nvim_create_autocmd("BufDelete", {
     end
   end
 })
+
+-- NvimTree autoclose
+vim.api.nvim_create_autocmd("WinClosed", {
+  callback = function()
+    local util = require("utils.tree")
+    local winnr = tonumber(vim.fn.expand("<amatch>"))
+    if winnr ~= nil then
+      vim.schedule_wrap(util.tab_win_closed(winnr))
+    end
+  end,
+  nested = true
+})
